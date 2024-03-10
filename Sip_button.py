@@ -15,7 +15,7 @@ user = "1008"
 domain = "192.168.0.36"
 
 #to call information
-to_user1 = "1006"
+to_user1 = "1002"
 to_user2 = "1006"
 to_domain = "192.168.0.36"
 
@@ -131,12 +131,12 @@ while acc.info().reg_status < 200 or acc.info().reg_status >= 300:
 while True:
     input_state = GPIO.input(4)
     if input_state == False:
+        #register button press and time
         print("Button pressed" + time.strftime("%Y-%m-%d %H:%M:%S")) 
+        while GPIO.input(4) == False:
+            time.sleep(0.5)
         if not call_active:
-            # Record the time the button was pressed
-            while GPIO.input(4) == False:
-                # Wait for the button to be released
-                time.sleep(0.3)
+   
             call_active = True
             make_call(acc, to_user1)
             
