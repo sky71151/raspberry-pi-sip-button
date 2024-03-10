@@ -136,7 +136,6 @@ while True:
         while GPIO.input(4) == False:
             time.sleep(0.5)
         if not call_active:
-   
             call_active = True
             make_call(acc, to_user1)
             
